@@ -1,8 +1,13 @@
 import os
 import requests
 
+# 스크립트 기준 경로
+script_dir = os.path.dirname(os.path.abspath(__file__))
+output_path = os.path.join(script_dir, "../_pages/problem-solving.md")
+
 # 토큰 파일에서 읽기
-TOKEN_PATH = "myacc.token"
+TOKEN_PATH = os.path.join(script_dir, "myacc.token")
+
 if not os.path.exists(TOKEN_PATH):
     raise FileNotFoundError(f"{TOKEN_PATH} 파일이 없습니다. 토큰을 해당 파일에 넣어주세요.")
 
@@ -23,9 +28,7 @@ author_profile: true
 
 """
 
-# 스크립트 기준 경로
-script_dir = os.path.dirname(os.path.abspath(__file__))
-output_path = os.path.join(script_dir, "../_pages/problem-solving.md")
+
 
 # GitHub API URL
 api_url = f"https://api.github.com/repos/{REPO_OWNER}/{REPO_NAME}/contents/{FILE_PATH}"
@@ -41,10 +44,15 @@ response = requests.get(api_url, headers=headers)
 
 # 결과 저장
 if response.status_code == 200:
+    text = response.text
+    # 치환 수행
+    text = text.replace('height="20"', 'height="10"')
+    
     with open(output_path, "w", encoding="utf-8") as f:
-        f.write(FRONT_MATTER)
-        f.write(response.text)
+        f.write(text)
     print(f"{output_path}에 저장 완료.")
 else:
     print(f"오류 발생: {response.status_code}")
     print(response.json())
+
+input("종료. [ENTER]로 창 닫기.")
