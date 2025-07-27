@@ -33,58 +33,11 @@ headers = {
     "Accept": "application/vnd.github.v3.raw"
 }
 
-# --- 변환 함수들 ---
-
-def convert_tier_img_links(text):
-    """
-    [<img src="...tier_small/xx.svg" height="xx"/>](링크)
-    => <a href="링크"><img src="..." alt="tier" style="height:16px;"></a>
-    """
-    pattern = re.compile(
-        r'\[<img\s+src="([^"]+tier_small/\d+\.svg)"\s+height="\d+"\s*/?>\]\((https?://[^\s)]+)\)'
-    )
-    return pattern.sub(
-        r'<a href="\2"><img src="\1" alt="tier" style="height:16px;"></a>',
-        text
-    )
-
-def convert_devicon_img_links(text):
-    """
-    [<img src="...devicon...svg" style="height:xxpx;" />](링크)
-    => <a href="링크"><img src="..." alt="cpp" style="height:16px;"></a>
-    """
-    pattern = re.compile(
-        r'\[<img\s+src="([^"]+devicon[^"]+)"\s+style="height:\d+px;"\s*/?>\]\((https?://[^\s)]+)\)'
-    )
-    return pattern.sub(
-        r'<a href="\2"><img src="\1" alt="cpp" style="height:16px;"></a>',
-        text
-    )
-
-def convert_problem_links(text):
-    """
-    [숫자](https://www.acmicpc.net/problem/숫자)
-    => <a href="링크">숫자</a>
-    """
-    pattern = re.compile(
-        r'\[(\d+)\]\((https://www\.acmicpc\.net/problem/\d+)\)'
-    )
-    return pattern.sub(
-        r'<a href="\2">\1</a>',
-        text
-    )
-
 # --- 실행 ---
 response = requests.get(api_url, headers=headers)
 
 if response.status_code == 200:
     text = response.text
-
-    # 변환 순서 중요: 티어 -> devicon -> 문제번호
-    text = convert_tier_img_links(text)
-    text = convert_devicon_img_links(text)
-    text = convert_problem_links(text)
-
     with open(output_path, "w", encoding="utf-8") as f:
         f.write(FRONT_MATTER)
         f.write(text)
