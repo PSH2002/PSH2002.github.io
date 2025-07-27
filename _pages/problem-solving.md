@@ -4,18 +4,18 @@ permalink: /ps/
 author_profile: true
 ---
 
-﻿<style>
+<style>
 table img {
-  height: 18px !important;
+  height: 18px
   vertical-align: middle;
 }
 </style>
 
-# 백준 문제 아카이브 (Archives for solved BOJ problems)
+﻿# 백준 문제 아카이브 (Archives for solved BOJ problems)
 
 [Full Archive (Not trimmed)](https://github.com/PSH2002/Algorithm_Solving/blob/main/%EB%B0%B1%EC%A4%80/README.md)
 
-**Last Updated:** 2025-07-27 12:33
+**Last Updated:** 2025-07-27 12:37
 
 ## Statistics
 

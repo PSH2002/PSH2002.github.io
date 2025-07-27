@@ -23,6 +23,13 @@ permalink: /ps/
 author_profile: true
 ---
 
+<style>
+table img {
+  height: 18px
+  vertical-align: middle;
+}
+</style>
+
 """
 
 api_url = f"https://api.github.com/repos/{REPO_OWNER}/{REPO_NAME}/contents/{FILE_PATH}"
