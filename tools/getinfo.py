@@ -46,9 +46,10 @@ response = requests.get(api_url, headers=headers)
 if response.status_code == 200:
     text = response.text
     # 치환 수행
-    text = text.replace('height="20"', 'height="10"')
+    text = text.replace('height="20"', 'height="5"')
     
     with open(output_path, "w", encoding="utf-8") as f:
+        f.write(FRONT_MATTER)
         f.write(text)
     print(f"{output_path}에 저장 완료.")
 else:
