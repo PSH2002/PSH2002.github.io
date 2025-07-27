@@ -1,3 +1,10 @@
+---
+title: "Problem_Solving"
+permalink: /ps/
+layout: posts
+author_profile: true
+---
+
 ﻿# 백준 문제 아카이브 (Archives for solved BOJ problems)
 
 **Last Updated:** 2025-07-27 07:58
