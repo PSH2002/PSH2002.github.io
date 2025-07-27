@@ -46,7 +46,11 @@ if response.status_code == 200:
     text = response.text
 
     # height="..."을 Jekyll에 잘 보이도록 style로 통일
-    text = re.sub(r'height="\d+"', 'style="height:8px;"', text)
+    text = re.sub(
+        r'\[<img\s+src="([^"]+)"[^>]*>\]\(([^)]+)\)',
+        r'<a href="\2"><img src="\1" style="height:16px;" alt="tier"></a>',
+        text
+    )
     
     with open(output_path, "w", encoding="utf-8") as f:
         f.write(FRONT_MATTER)
