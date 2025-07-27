@@ -36,6 +36,7 @@ headers = {
 response = requests.get(api_url, headers=headers)
 
 if response.status_code == 200:
+    print("토큰을 이용하여 열심히 제작하는 중...")
     text = response.text
 
     # --- [1] tier.svg 마크다운 → <a><img></a> 형식으로 변환 ---
