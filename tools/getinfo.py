@@ -1,4 +1,5 @@
 import os
+import re
 import requests
 
 # 스크립트 기준 경로
@@ -28,8 +29,6 @@ author_profile: true
 
 """
 
-
-
 # GitHub API URL
 api_url = f"https://api.github.com/repos/{REPO_OWNER}/{REPO_NAME}/contents/{FILE_PATH}"
 
@@ -45,8 +44,9 @@ response = requests.get(api_url, headers=headers)
 # 결과 저장
 if response.status_code == 200:
     text = response.text
-    # 치환 수행
-    text = text.replace('height="20"', 'height="5"')
+
+    # height="..."을 Jekyll에 잘 보이도록 style로 통일
+    text = re.sub(r'height="\d+"', 'style="height:8px;"', text)
     
     with open(output_path, "w", encoding="utf-8") as f:
         f.write(FRONT_MATTER)
