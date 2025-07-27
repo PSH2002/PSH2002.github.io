@@ -1,0 +1,4 @@
+table img {
+  height: 18px !important;
+  vertical-align: middle; /* 선택사항, 보기 좋게 */
+}
