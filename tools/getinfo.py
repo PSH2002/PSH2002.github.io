@@ -5,8 +5,6 @@ import requests
 # 스크립트 기준 경로
 script_dir = os.path.dirname(os.path.abspath(__file__))
 output_path = os.path.join(script_dir, "../_pages/problem-solving.md")
-
-# 토큰 파일에서 읽기
 TOKEN_PATH = os.path.join(script_dir, "myacc.token")
 
 if not os.path.exists(TOKEN_PATH):
@@ -15,7 +13,6 @@ if not os.path.exists(TOKEN_PATH):
 with open(TOKEN_PATH, 'r') as f:
     GITHUB_TOKEN = f.read().strip()
 
-# GitHub 정보
 REPO_OWNER = "PSH2002"
 REPO_NAME = "Algorithm_Solving"
 FILE_PATH = "백준/README.md"
@@ -29,33 +26,46 @@ author_profile: true
 
 """
 
-# GitHub API URL
 api_url = f"https://api.github.com/repos/{REPO_OWNER}/{REPO_NAME}/contents/{FILE_PATH}"
 
-# 요청 헤더
 headers = {
     "Authorization": f"token {GITHUB_TOKEN}",
     "Accept": "application/vnd.github.v3.raw"
 }
 
-# 요청 보내기
 response = requests.get(api_url, headers=headers)
 
-# 결과 저장
 if response.status_code == 200:
     text = response.text
 
-    # height="..."을 Jekyll에 잘 보이도록 style로 통일
+    # --- [1] tier.svg 마크다운 → <a><img></a> 형식으로 변환 ---
+    # 예: [<img src="https://static.solved.ac/tier_small/20.svg" height="20"/>]()
     text = re.sub(
-        r'\[<img\s+src="([^"]+)"[^>]*>\]\(([^)]+)\)',
-        r'<a href="\2"><img src="\1" style="height:16px;" alt="tier"></a>',
+        r'\[<img src="([^"]+tier_small/\d+\.svg)"[^>]*>\]\(\)',
+        r'<a href="#"><img src="\1" alt="tier" style="height:24px;"></a>',
         text
     )
-    
+
+    # --- [2] devicon image의 height도 style로 강제 변환 (이미 HTML임) ---
+    text = re.sub(
+        r'<img src="([^"]+devicon[^"]+)"[^>]*>',
+        r'<img src="\1" alt="cpp" style="height:24px;">',
+        text
+    )
+
+    # --- [3] 문제 번호 마크다운 링크 → <a>로 변환 ---
+    # 예: [7938](https://www.acmicpc.net/problem/7938)
+    text = re.sub(
+        r'\[(\d+)\]\((https://www\.acmicpc\.net/problem/\d+)\)',
+        r'<a href="\2">\1</a>',
+        text
+    )
+
     with open(output_path, "w", encoding="utf-8") as f:
         f.write(FRONT_MATTER)
         f.write(text)
     print(f"{output_path}에 저장 완료.")
+
 else:
     print(f"오류 발생: {response.status_code}")
     print(response.json())
