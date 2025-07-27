@@ -1,8 +1,15 @@
 import os
 import requests
 
+# 토큰 파일에서 읽기
+TOKEN_PATH = "myacc.token"
+if not os.path.exists(TOKEN_PATH):
+    raise FileNotFoundError(f"{TOKEN_PATH} 파일이 없습니다. 토큰을 해당 파일에 넣어주세요.")
+
+with open(TOKEN_PATH, 'r') as f:
+    GITHUB_TOKEN = f.read().strip()
+
 # GitHub 정보
-GITHUB_TOKEN = "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"  # ← 본인의 토큰으로 교체
 REPO_OWNER = "PSH2002"
 REPO_NAME = "Algorithm_Solving"
 FILE_PATH = "백준/README.md"
