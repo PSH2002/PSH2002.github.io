@@ -15,7 +15,7 @@ table img {
 
 [Full Archive (Not trimmed)](https://github.com/PSH2002/Algorithm_Solving/blob/main/%EB%B0%B1%EC%A4%80/README.md)
 
-**Last Updated:** 2025-07-27 17:52
+**Last Updated:** 2025-07-27 18:00
 
 ## Statistics
 
