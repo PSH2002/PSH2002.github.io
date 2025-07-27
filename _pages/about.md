@@ -3,7 +3,7 @@ permalink: /about/
 title: "About"
 ---
 
-# Education
+## Education
 
 * **Seoul National University** 
   * Mar. 2021 - Present
