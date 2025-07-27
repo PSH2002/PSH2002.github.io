@@ -2,7 +2,7 @@ import os
 import re
 import requests
 
-# 스크립트 기준 경로
+# --- 설정 ---
 script_dir = os.path.dirname(os.path.abspath(__file__))
 output_path = os.path.join(script_dir, "../_pages/problem-solving.md")
 TOKEN_PATH = os.path.join(script_dir, "myacc.token")
@@ -33,40 +33,63 @@ headers = {
     "Accept": "application/vnd.github.v3.raw"
 }
 
-response = requests.get(api_url, headers=headers)
+# --- 변환 함수들 ---
 
-if response.status_code == 200:
-    print("토큰을 이용하여 열심히 제작하는 중...")
-    text = response.text
-
-    # --- [1] tier.svg 마크다운 → <a><img></a> 형식으로 변환 ---
-    # 예: [<img src="https://static.solved.ac/tier_small/20.svg" height="20"/>]()
-    text = re.sub(
-        r'\[<img src="([^"]+tier_small/\d+\.svg)"[^>]*>\]\(\)',
-        r'<a href="#"><img src="\1" alt="tier" style="height:24px;"></a>',
+def convert_tier_img_links(text):
+    """
+    [<img src="...tier_small/xx.svg" height="xx"/>](링크)
+    => <a href="링크"><img src="..." alt="tier" style="height:16px;"></a>
+    """
+    pattern = re.compile(
+        r'\[<img\s+src="([^"]+tier_small/\d+\.svg)"\s+height="\d+"\s*/?>\]\((https?://[^\s)]+)\)'
+    )
+    return pattern.sub(
+        r'<a href="\2"><img src="\1" alt="tier" style="height:16px;"></a>',
         text
     )
 
-    # --- [2] devicon image의 height도 style로 강제 변환 (이미 HTML임) ---
-    text = re.sub(
-        r'<img src="([^"]+devicon[^"]+)"[^>]*>',
-        r'<img src="\1" alt="cpp" style="height:24px;">',
+def convert_devicon_img_links(text):
+    """
+    [<img src="...devicon...svg" style="height:xxpx;" />](링크)
+    => <a href="링크"><img src="..." alt="cpp" style="height:16px;"></a>
+    """
+    pattern = re.compile(
+        r'\[<img\s+src="([^"]+devicon[^"]+)"\s+style="height:\d+px;"\s*/?>\]\((https?://[^\s)]+)\)'
+    )
+    return pattern.sub(
+        r'<a href="\2"><img src="\1" alt="cpp" style="height:16px;"></a>',
         text
     )
 
-    # --- [3] 문제 번호 마크다운 링크 → <a>로 변환 ---
-    # 예: [7938](https://www.acmicpc.net/problem/7938)
-    text = re.sub(
-        r'\[(\d+)\]\((https://www\.acmicpc\.net/problem/\d+)\)',
+def convert_problem_links(text):
+    """
+    [숫자](https://www.acmicpc.net/problem/숫자)
+    => <a href="링크">숫자</a>
+    """
+    pattern = re.compile(
+        r'\[(\d+)\]\((https://www\.acmicpc\.net/problem/\d+)\)'
+    )
+    return pattern.sub(
         r'<a href="\2">\1</a>',
         text
     )
 
+# --- 실행 ---
+response = requests.get(api_url, headers=headers)
+
+if response.status_code == 200:
+    text = response.text
+
+    # 변환 순서 중요: 티어 -> devicon -> 문제번호
+    text = convert_tier_img_links(text)
+    text = convert_devicon_img_links(text)
+    text = convert_problem_links(text)
+
     with open(output_path, "w", encoding="utf-8") as f:
         f.write(FRONT_MATTER)
         f.write(text)
-    print(f"{output_path}에 저장 완료.")
 
+    print(f"{output_path}에 저장 완료.")
 else:
     print(f"오류 발생: {response.status_code}")
     print(response.json())
