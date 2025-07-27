@@ -1,7 +1,6 @@
 ---
 title: "Problem_Solving"
 permalink: /ps/
-layout: posts
 author_profile: true
 ---
 
@@ -16,7 +15,7 @@ table img {
 
 [Full Archive (Not trimmed)](https://github.com/PSH2002/Algorithm_Solving/blob/main/%EB%B0%B1%EC%A4%80/README.md)
 
-**Last Updated:** 2025-07-27 12:27
+**Last Updated:** 2025-07-27 12:33
 
 ## Statistics
 
@@ -191,8 +190,3 @@ Total : 6 Problems
 | Problem | Problem | Problem | Problem | Problem | Problem |
 | :---: | :---: | :---: | :---: | :---: | :---: |
 | [<img src="https://static.solved.ac/tier_small/14.svg" style="height:18px;" alt="tier"/>](https://www.acmicpc.net/status?from_mine=1&problem_id=2181&user_id=sungheeboy&language_id=-1&result_id=4&from_mine=1) [<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" style="height:18px;" alt="C++"/>](https://www.acmicpc.net/status?from_mine=1&problem_id=2181&user_id=sungheeboy&language_id=-1&result_id=4&from_mine=1)<br>[2181](https://www.acmicpc.net/problem/2181) | [<img src="https://static.solved.ac/tier_small/12.svg" style="height:18px;" alt="tier"/>](https://www.acmicpc.net/status?from_mine=1&problem_id=29492&user_id=sungheeboy&language_id=-1&result_id=4&from_mine=1) [<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" style="height:18px;" alt="C++"/>](https://www.acmicpc.net/status?from_mine=1&problem_id=29492&user_id=sungheeboy&language_id=-1&result_id=4&from_mine=1)<br>[29492](https://www.acmicpc.net/problem/29492) | [<img src="https://static.solved.ac/tier_small/11.svg" style="height:18px;" alt="tier"/>](https://www.acmicpc.net/status?from_mine=1&problem_id=29849&user_id=sungheeboy&language_id=-1&result_id=4&from_mine=1) [<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" style="height:18px;" alt="C++"/>](https://www.acmicpc.net/status?from_mine=1&problem_id=29849&user_id=sungheeboy&language_id=-1&result_id=4&from_mine=1)<br>[29849](https://www.acmicpc.net/problem/29849) | [<img src="https://static.solved.ac/tier_small/0.svg" style="height:18px;" alt="tier"/>](https://www.acmicpc.net/status?from_mine=1&problem_id=9736&user_id=sungheeboy&language_id=-1&result_id=4&from_mine=1) [<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" style="height:18px;" alt="C++"/>](https://www.acmicpc.net/status?from_mine=1&problem_id=9736&user_id=sungheeboy&language_id=-1&result_id=4&from_mine=1)<br>[9736](https://www.acmicpc.net/problem/9736) | [<img src="https://static.solved.ac/tier_small/0.svg" style="height:18px;" alt="tier"/>](https://www.acmicpc.net/status?from_mine=1&problem_id=10618&user_id=sungheeboy&language_id=-1&result_id=4&from_mine=1) [<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" style="height:18px;" alt="Python"/>](https://www.acmicpc.net/status?from_mine=1&problem_id=10618&user_id=sungheeboy&language_id=-1&result_id=4&from_mine=1)<br>[10618](https://www.acmicpc.net/problem/10618) | [<img src="https://static.solved.ac/tier_small/0.svg" style="height:18px;" alt="tier"/>](https://www.acmicpc.net/status?from_mine=1&problem_id=27903&user_id=sungheeboy&language_id=-1&result_id=4&from_mine=1) [<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" style="height:18px;" alt="Python"/>](https://www.acmicpc.net/status?from_mine=1&problem_id=27903&user_id=sungheeboy&language_id=-1&result_id=4&from_mine=1)<br>[27903](https://www.acmicpc.net/problem/27903) |
-
-## UsefulTools
-
-Total : 0 Problems
-

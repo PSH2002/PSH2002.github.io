@@ -20,7 +20,6 @@ FILE_PATH = "백준/README.md"
 FRONT_MATTER = """---
 title: "Problem_Solving"
 permalink: /ps/
-layout: posts
 author_profile: true
 ---
 
