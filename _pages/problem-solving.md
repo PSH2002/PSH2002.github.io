@@ -15,13 +15,13 @@ table img {
 
 [Full Archive (Not trimmed)](https://github.com/PSH2002/Algorithm_Solving/blob/main/%EB%B0%B1%EC%A4%80/README.md)
 
-**Last Updated:** 2025-07-29 11:05
+**Last Updated:** 2025-07-29 11:31
 
 ## Statistics
 
-|   Ruby   | Diamond  | Platinum |   Gold   |  Silver  |  Bronze  |   etc    |  Total   |
-| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| 1 | 51 | 268 | 339 | 269 | 229 | 0 | 1160 |
+|   Ruby   | Diamond  | Platinum |   Gold   |  Silver  |  Bronze  | Unrated  |   etc    |  Total   |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+|    1     |    51    |   268    |   339    |   269    |   229    |    3     |    0     |   1160   |
 
 ## Ruby
 
