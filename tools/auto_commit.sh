@@ -1,8 +1,9 @@
-echo 
-PATH = $(dirname ${BASH_SOURCE[0]})
+#!/bin/bash
+
+TOOLPATH=$(dirname ${BASH_SOURCE[0]})
 
 git pull || { echo "[오류] git pull 실패"; exit 1; }
-python3 $(PATH) || { echo "[오류] DatasetUpdater.py 실행 실패"; exit 1; }
+python3 "$TOOLPATH/getinfo.py" || { echo "[오류] DatasetUpdater.py 실행 실패"; exit 1; }
 
 git add . || { echo "[오류] git add 실패"; exit 1; }
 
